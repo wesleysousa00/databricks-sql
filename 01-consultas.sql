@@ -1,15 +1,34 @@
 -- Databricks notebook source
-SELECT 
-  A.*,
-  B.*
-FROM silver_olist.item_pedido A
-INNER JOIN silver_olist.avaliacao_pedido B
-        ON A.idPedido = B.idPedido
-WHERE A.idPedidoItem = 1
+SELECT * FROM silver_olist.pedido
 
 -- COMMAND ----------
 
-SELECT 'OLÁ MUNDO'
+SELECT *
+       
+FROM silver_olist.pedido
+
+LIMIT 
+
+-- COMMAND ----------
+
+-- Diferença entre a data do pedido e a data de entrega.
+SELECT
+  DATEDIFF(dtEstimativaEntrega, dtEntregue)
+FROM
+  silver_olist.pedido
+LIMIT
+  5
+
+-- COMMAND ----------
+
+-- Diferença entre a data do pedido e a data de entrega.
+SELECT
+dtEstimativaEntrega,
+  DAY(dtEstimativaEntrega)
+FROM
+  silver_olist.pedido
+LIMIT
+  5
 
 -- COMMAND ----------
 
